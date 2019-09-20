@@ -16,6 +16,8 @@ import AttributorStore from './attributor/store';
 
 import * as Registry from './registry';
 
+import { setMutationObserverType } from './util/mutation-observer';
+
 let Parchment = {
   Scope: Registry.Scope,
 
@@ -41,6 +43,8 @@ let Parchment = {
 
     Store: AttributorStore,
   },
+
+  setMutationObserverType,
 };
 
 export default Parchment;
