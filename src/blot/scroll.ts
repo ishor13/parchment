@@ -2,6 +2,7 @@ import { Blot } from './abstract/blot';
 import ContainerBlot from './abstract/container';
 import LinkedList from '../collection/linked-list';
 import * as Registry from '../registry';
+import { getMutationObserverType } from '../util/mutation-observer';
 
 const OBSERVER_CONFIG = {
   attributes: true,
@@ -24,7 +25,7 @@ class ScrollBlot extends ContainerBlot {
   constructor(node: HTMLDivElement) {
     super(node);
     this.scroll = this;
-    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+    this.observer = new (getMutationObserverType())((mutations: MutationRecord[]) => {
       this.update(mutations);
     });
     this.observer.observe(this.domNode, OBSERVER_CONFIG);
